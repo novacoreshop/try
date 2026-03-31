@@ -1,0 +1,1152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>NOVA CORE — Premium Streetwear</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Manrope:wght@300;400;500;600;700;800&family=Bebas+Neue&family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/styles.css">
+</head>
+<body>
+ 
+<!-- LOADER -->
+<div id="loader">
+  <div class="loader-brand">NOVA <span style="color:var(--accent)">CORE</span></div>
+  <div class="loader-bar-wrap"><div class="loader-bar"></div></div>
+</div>
+ 
+<!-- NAVIGATION -->
+<nav id="mainNav">
+  <a class="nav-logo" href="/" onclick="return navigate('home')" aria-label="Nova Core home">
+    <span class="nav-logo-mark">
+      <img src="images/nova%20core%20logo.png" alt="Nova Core logo">
+    </span>
+    <span class="nav-logo-text">NOVA<span>.</span>CORE</span>
+  </a>
+  <div class="nav-links">
+    <a href="/" onclick="return navigate('home')">Home</a>
+    <a href="/shop" onclick="return navigate('shop')">Shop</a>
+    <a href="/about" onclick="return navigate('about')">About</a>
+    <a href="/contact" onclick="return navigate('contact')">Contact</a>
+    <a href="/tracking" onclick="return navigate('tracking')">Track Order</a>
+    <a href="/custom" onclick="return navigate('custom')">Custom</a>
+  </div>
+  <div class="nav-actions">
+    <button class="nav-icon-btn" onclick="return focusShopSearch()" title="Search products" aria-label="Search products">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>
+    </button>
+    <button class="nav-icon-btn" onclick="openCart()" title="Cart">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+      <span class="cart-count" id="cartCount">0</span>
+    </button>
+    <button class="nav-icon-btn" onclick="navigate('admin-login')" title="Admin" style="font-size:0.6rem;font-weight:700;letter-spacing:0.05em;color:var(--muted-grey)">ADM</button>
+    <div class="hamburger" onclick="toggleMobileNav()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+ 
+<!-- MOBILE NAV -->
+<div class="mobile-nav" id="mobileNav">
+  <a href="/" onclick="return navigate('home')">Home</a>
+  <a href="/shop" onclick="return navigate('shop')">Shop</a>
+  <a href="/about" onclick="return navigate('about')">About</a>
+  <a href="/contact" onclick="return navigate('contact')">Contact</a>
+  <a href="/tracking" onclick="return navigate('tracking')">Track Order</a>
+  <a href="/custom" onclick="return navigate('custom')">Custom</a>
+  <a href="/shipping" onclick="return navigate('shipping')" style="font-size:1rem;color:var(--muted-grey)">Shipping & Returns</a>
+</div>
+ 
+<!-- ══════════════════════════════════════════ HOME PAGE -->
+<div class="page active" id="page-home">
+ 
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-grid"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">Spring / Summer 2025 — Collection Zero</div>
+      <div class="hero-sub">Engineered for those who move between worlds. Premium streetwear built with intent.</div>
+      <h1 class="hero-title" aria-label="Nova Core">
+        <span class="hero-word hero-word-left" aria-hidden="true">
+          <span class="hero-letter" style="--i:0">N</span>
+          <span class="hero-letter" style="--i:1">O</span>
+          <span class="hero-letter" style="--i:2">V</span>
+          <span class="hero-letter" style="--i:3">A</span>
+        </span>
+        <span class="hero-word hero-word-right" aria-hidden="true">
+          <span class="hero-letter" style="--i:0">C</span>
+          <span class="hero-letter" style="--i:1">O</span>
+          <span class="hero-letter" style="--i:2">R</span>
+          <span class="hero-letter" style="--i:3">E</span>
+        </span>
+      </h1>
+      <div class="hero-ctas">
+        <a href="#" class="btn-primary" onclick="navigate('shop')">Shop Collection</a>
+        <a href="#" class="btn-outline" onclick="navigate('about')">Our Story</a>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-line"></div>
+      <div class="scroll-label">Scroll</div>
+    </div>
+  </section>
+ 
+  <!-- MARQUEE -->
+  <div class="marquee-strip">
+    <div class="marquee-track" id="marqueeTrack">
+      <span class="marquee-item">NOVA CORE</span>
+      <span class="marquee-item">SS25</span>
+      <span class="marquee-item">COLLECTION ZERO</span>
+      <span class="marquee-item">LIMITED EDITION</span>
+      <span class="marquee-item">PREMIUM STREETWEAR</span>
+      <span class="marquee-item">BUILT WITH INTENT</span>
+      <span class="marquee-item">NOVA CORE</span>
+      <span class="marquee-item">SS25</span>
+      <span class="marquee-item">COLLECTION ZERO</span>
+      <span class="marquee-item">LIMITED EDITION</span>
+      <span class="marquee-item">PREMIUM STREETWEAR</span>
+      <span class="marquee-item">BUILT WITH INTENT</span>
+    </div>
+  </div>
+ 
+  <!-- COLLECTIONS -->
+  <section class="collections-section">
+    <div class="collections-header">
+      <div>
+        <div class="section-label">Explore</div>
+        <h2 class="section-title">Collections</h2>
+      </div>
+      <a href="#" class="view-all" onclick="navigate('shop')">View All →</a>
+    </div>
+    <div class="collections-grid">
+      <div class="collection-card" onclick="navigate('shop')">
+        <div class="collection-img" style="width:100%;height:100%;background:linear-gradient(145deg,#1a1a1a 0%,#2a2a2a 50%,#1e1c1a 100%);display:flex;align-items:center;justify-content:center">
+          <span style="font-family:var(--font-accent);font-size:6rem;color:rgba(200,168,130,0.12);letter-spacing:0.1em">HOODIES</span>
+        </div>
+        <div class="collection-overlay"></div>
+        <div class="collection-info">
+          <div class="collection-tag">New Drop</div>
+          <div class="collection-name">Oversized Series</div>
+          <div class="collection-count">12 Pieces Available</div>
+        </div>
+      </div>
+      <div class="collection-card" onclick="navigate('shop')">
+        <div class="collection-img" style="width:100%;height:100%;background:linear-gradient(145deg,#242220 0%,#3a3836 100%);display:flex;align-items:center;justify-content:center">
+          <span style="font-family:var(--font-accent);font-size:5rem;color:rgba(200,168,130,0.1);letter-spacing:0.1em">TEES</span>
+        </div>
+        <div class="collection-overlay"></div>
+        <div class="collection-info">
+          <div class="collection-tag">Best Sellers</div>
+          <div class="collection-name">Graphic Tees</div>
+          <div class="collection-count">18 Pieces Available</div>
+        </div>
+      </div>
+      <div class="collection-card" onclick="navigate('shop')">
+        <div class="collection-img" style="width:100%;height:100%;background:linear-gradient(145deg,#18160e 0%,#2c2820 100%);display:flex;align-items:center;justify-content:center">
+          <span style="font-family:var(--font-accent);font-size:4rem;color:rgba(200,168,130,0.1);letter-spacing:0.1em">LIMITED</span>
+        </div>
+        <div class="collection-overlay"></div>
+        <div class="collection-info">
+          <div class="collection-tag">Limited Pieces</div>
+          <div class="collection-name">Core Capsule</div>
+          <div class="collection-count">Only 5 Left</div>
+        </div>
+      </div>
+      <div class="collection-card" onclick="navigate('shop')">
+        <div class="collection-img" style="width:100%;height:100%;background:linear-gradient(145deg,#0f0e0c 0%,#1e1c18 100%);display:flex;align-items:center;justify-content:center">
+          <span style="font-family:var(--font-accent);font-size:4rem;color:rgba(200,168,130,0.1);letter-spacing:0.1em">HATS</span>
+        </div>
+        <div class="collection-overlay"></div>
+        <div class="collection-info">
+          <div class="collection-tag">Accessories</div>
+          <div class="collection-name">Headwear</div>
+          <div class="collection-count">8 Styles</div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- FEATURED PRODUCTS -->
+  <section class="products-section">
+    <div class="section-label">Curated Selection</div>
+    <h2 class="section-title">Featured Pieces</h2>
+    <div class="products-grid" id="featuredGrid">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+ 
+  <!-- LOOKBOOK -->
+  <div class="lookbook-section">
+    <div class="lookbook-inner">
+      <div class="lookbook-visual">
+        <div class="lookbook-label">SS25</div>
+      </div>
+      <div class="lookbook-content">
+        <div class="section-label">Lookbook</div>
+        <div class="lookbook-season">COLLECTION<span>ZERO</span></div>
+        <p class="lookbook-desc">The first chapter of Nova Core. Minimal forms. Precise construction. Pieces made to outlast the season they were born in.</p>
+        <div class="lookbook-cta">
+          <a href="#" class="btn-outline" onclick="navigate('shop')">Explore the Drop</a>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- BRAND STORY -->
+  <section class="story-section">
+    <div class="story-bg-text">NOVA</div>
+    <div class="story-inner">
+      <div class="story-text">
+        <div class="section-label">Who We Are</div>
+        <h2 class="story-heading">Born from the space between fashion and function.</h2>
+        <p class="story-body">Nova Core didn't start with a mood board. It started with a question — why does premium feel like compromise? We built this brand to close that gap. Every piece is designed to carry weight without feeling heavy.</p>
+        <div class="story-values">
+          <div class="value-item">
+            <div class="value-num">01</div>
+            <div class="value-label">Material First</div>
+            <div class="value-desc">Premium fabrics sourced with purpose</div>
+          </div>
+          <div class="value-item">
+            <div class="value-num">02</div>
+            <div class="value-label">Form & Function</div>
+            <div class="value-desc">Designed to move, built to last</div>
+          </div>
+          <div class="value-item">
+            <div class="value-num">03</div>
+            <div class="value-label">Limited Runs</div>
+            <div class="value-desc">Scarcity with intention, not gimmick</div>
+          </div>
+          <div class="value-item">
+            <div class="value-num">04</div>
+            <div class="value-label">Real Identity</div>
+            <div class="value-desc">No trend-chasing. Just conviction.</div>
+          </div>
+        </div>
+        <a href="#" class="btn-outline" style="display:inline-block;margin-top:40px" onclick="navigate('about')">Read Our Story</a>
+      </div>
+      <div class="story-right">
+        <div class="story-img-main">
+          <div class="story-img-accent">NC</div>
+        </div>
+        <div class="story-float-card">
+          <div class="story-float-num">2025</div>
+          <div class="story-float-label">Founded</div>
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+  <!-- NEWSLETTER -->
+  <div class="newsletter-section">
+    <div class="newsletter-inner">
+      <div class="newsletter-tag">Early Access</div>
+      <h2 class="newsletter-title">Be the first to know.</h2>
+      <p class="newsletter-sub">Drop alerts, exclusive access, and early release codes — delivered direct.</p>
+      <div class="newsletter-form">
+        <input type="email" class="newsletter-input" placeholder="your@email.com" id="newsletterEmail">
+        <button class="newsletter-submit" onclick="subscribeNewsletter()">Join</button>
+      </div>
+    </div>
+  </div>
+ 
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">NOVA<span>.</span>CORE</div>
+        <p class="footer-tagline">Premium streetwear engineered for those who move between worlds.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/novacoreshop" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
+          <a href="https://www.tiktok.com/@novacoreshop" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TK</a>
+          <a href="https://www.facebook.com/novacoreshop" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a>
+          <a href="https://www.youtube.com/@novacoreshop" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YT</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#" onclick="navigate('shop')">All Products</a></li>
+          <li><a href="#" onclick="navigate('shop')">Hoodies</a></li>
+          <li><a href="#" onclick="navigate('shop')">T-Shirts</a></li>
+          <li><a href="#" onclick="navigate('shop')">Hats</a></li>
+          <li><a href="#" onclick="navigate('shop')">Shorts</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Brand</h4>
+        <ul>
+          <li><a href="#" onclick="navigate('about')">Our Story</a></li>
+          <li><a href="#" onclick="navigate('custom')">Custom Orders</a></li>
+          <li><a href="#" onclick="navigate('contact')">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Support</h4>
+        <ul>
+          <li><a href="#" onclick="navigate('shipping')">Shipping & Returns</a></li>
+          <li><a href="#" onclick="navigate('tracking')">Track Order</a></li>
+          <li><a href="#" onclick="navigate('contact')">Help Center</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Nova Core. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="/privacy" onclick="return navigate('privacy')">Privacy Policy</a>
+        <a href="/terms" onclick="return navigate('terms')">Terms of Service</a>
+        <a href="/cookies" onclick="return navigate('cookies')">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+ 
+</div>
+ 
+<!-- ══════════════════════════════════════════ SHOP PAGE -->
+<div class="page" id="page-shop">
+  <div class="shop-hero">
+    <h1 data-animated-banner>The Shop</h1>
+    <div class="shop-controls">
+      <div class="shop-search">
+        <label class="sr-only" for="shopSearchInput">Search products</label>
+        <div class="shop-search-bar">
+          <span class="shop-search-icon" aria-hidden="true">⌕</span>
+          <input id="shopSearchInput" class="shop-search-input" type="search" placeholder="Search hoodies, tees, hats, shorts..." autocomplete="off" oninput="handleSearchInput(this.value)" onfocus="renderSearchSuggestions()" onkeydown="if(event.key==='Enter'){event.preventDefault();runProductSearch();}">
+          <button class="search-submit" onclick="runProductSearch()">Search</button>
+        </div>
+        <div class="search-predict" id="shopSearchSuggestions"></div>
+        <div class="shop-search-status" id="shopSearchStatus">Start typing and we’ll suggest matching products instantly.</div>
+      </div>
+      <button class="filter-btn active" onclick="filterProducts('all',this)">All</button>
+      <button class="filter-btn" onclick="filterProducts('hoodies',this)">Hoodies</button>
+      <button class="filter-btn" onclick="filterProducts('tees',this)">T-Shirts</button>
+      <button class="filter-btn" onclick="filterProducts('hats',this)">Hats</button>
+      <button class="filter-btn" onclick="filterProducts('shorts',this)">Shorts</button>
+      <button class="filter-btn" onclick="filterProducts('limited',this)">Limited</button>
+      <select class="sort-select" onchange="sortProducts(this.value)">
+        <option value="default">Featured</option>
+        <option value="price-asc">Price: Low to High</option>
+        <option value="price-desc">Price: High to Low</option>
+        <option value="new">Newest</option>
+      </select>
+    </div>
+  </div>
+  <div class="shop-body">
+    <div class="shop-grid" id="shopGrid"></div>
+  </div>
+ 
+  <div class="newsletter-section" style="margin-top:0">
+    <div class="newsletter-inner">
+      <div class="newsletter-tag">Early Access</div>
+      <h2 class="newsletter-title">Get drop alerts.</h2>
+      <p class="newsletter-sub">New pieces drop fast. Be on the list before everyone else.</p>
+      <div class="newsletter-form">
+        <input type="email" class="newsletter-input" placeholder="your@email.com">
+        <button class="newsletter-submit" onclick="subscribeNewsletter()">Join</button>
+      </div>
+    </div>
+  </div>
+ 
+  <footer>
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand">NOVA<span>.</span>CORE</div>
+        <p class="footer-tagline">Premium streetwear engineered for those who move between worlds.</p>
+        <div class="footer-socials">
+          <a href="https://www.instagram.com/novacoreshop" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a>
+          <a href="https://www.tiktok.com/@novacoreshop" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TK</a>
+          <a href="https://www.facebook.com/novacoreshop" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a>
+          <a href="https://www.youtube.com/@novacoreshop" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="YouTube">YT</a>
+        </div>
+      </div>
+      <div class="footer-col"><h4>Shop</h4><ul><li><a href="#" onclick="navigate('shop')">All Products</a></li><li><a href="#" onclick="navigate('shop')">Hoodies</a></li><li><a href="#" onclick="navigate('shop')">T-Shirts</a></li></ul></div>
+      <div class="footer-col"><h4>Brand</h4><ul><li><a href="#" onclick="navigate('about')">Our Story</a></li><li><a href="#" onclick="navigate('custom')">Custom Orders</a></li></ul></div>
+      <div class="footer-col"><h4>Support</h4><ul><li><a href="#" onclick="navigate('shipping')">Shipping & Returns</a></li><li><a href="#" onclick="navigate('tracking')">Track Order</a></li></ul></div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Nova Core. All rights reserved.</div>
+      <div class="footer-legal">
+        <a href="/privacy" onclick="return navigate('privacy')">Privacy</a>
+        <a href="/terms" onclick="return navigate('terms')">Terms</a>
+        <a href="/cookies" onclick="return navigate('cookies')">Cookies</a>
+      </div>
+    </div>
+  </footer>
+</div>
+ 
+<!-- ══════════════════════════════════════════ PRODUCT PAGE -->
+<div class="page" id="page-product">
+  <div class="product-page">
+    <div class="product-layout">
+      <div class="product-gallery">
+        <div class="gallery-main">
+          <div class="gallery-placeholder">
+            <div class="big-label" id="galleryLabel">NC</div>
+            <div class="sub-label" id="gallerySubLabel">Nova Core</div>
+          </div>
+        </div>
+        <div class="gallery-thumbs">
+          <div class="gallery-thumb active">01</div>
+          <div class="gallery-thumb">02</div>
+          <div class="gallery-thumb">03</div>
+          <div class="gallery-thumb">04</div>
+        </div>
+      </div>
+      <div class="product-detail">
+        <a href="#" class="back-link" onclick="navigate('shop')">← Back to Shop</a>
+        <div class="product-detail-brand">Nova Core — SS25</div>
+        <h1 class="product-detail-name" id="detailName">Core Oversized Hoodie</h1>
+        <div class="product-detail-price" id="detailPrice">$185 <span class="orig" id="detailOrig"></span></div>
+        <div class="product-rating">
+          <div class="stars">★★★★★</div>
+          <div class="rating-count">4.9 (48 reviews)</div>
+        </div>
+        <div class="divider"></div>
+ 
+        <div style="margin-bottom:24px">
+          <div class="option-label">Color <span id="selectedColor">Phantom Black</span></div>
+          <div class="color-options" id="colorOptions">
+            <div class="color-swatch active" style="background:#1a1a1a" title="Phantom Black" onclick="selectColor(this,'Phantom Black')"></div>
+            <div class="color-swatch" style="background:#3a3836" title="Warm Charcoal" onclick="selectColor(this,'Warm Charcoal')"></div>
+            <div class="color-swatch" style="background:#c8bfb0" title="Sand Beige" onclick="selectColor(this,'Sand Beige')"></div>
+            <div class="color-swatch" style="background:#2c2420" title="Mocha" onclick="selectColor(this,'Mocha')"></div>
+          </div>
+        </div>
+ 
+        <div style="margin-bottom:28px">
+          <div class="option-label">Size <span><a href="/size-guide" onclick="return navigate('size-guide')" style="color:var(--accent);font-size:0.72rem;text-decoration:underline;letter-spacing:0">Size Guide</a></span></div>
+          <div class="size-options">
+            <button class="size-btn unavail" title="Out of stock">XS</button>
+            <button class="size-btn" onclick="selectSize(this)">S</button>
+            <button class="size-btn active" onclick="selectSize(this)">M</button>
+            <button class="size-btn" onclick="selectSize(this)">L</button>
+            <button class="size-btn" onclick="selectSize(this)">XL</button>
+            <button class="size-btn" onclick="selectSize(this)">XXL</button>
+          </div>
+        </div>
+ 
+        <div class="qty-row">
+          <div class="qty-ctrl">
+            <button class="qty-btn" onclick="changeQty(-1)">−</button>
+            <input class="qty-input" type="number" value="1" min="1" max="10" id="qtyInput">
+            <button class="qty-btn" onclick="changeQty(1)">+</button>
+          </div>
+          <button class="add-cart-btn" onclick="addToCartFromDetail()"><span>Add to Cart</span></button>
+        </div>
+ 
+        <div class="divider"></div>
+ 
+        <p class="product-desc" id="detailDesc">An oversized silhouette built from 400GSM French Terry cotton. Cut wide, dropped shoulder, garment-washed for a lived-in feel that holds its shape wear after wear.</p>
+ 
+        <div class="product-features">
+          <div class="feature-item"><span class="feature-icon">◆</span> 400GSM French Terry Cotton — 100% ring-spun</div>
+          <div class="feature-item"><span class="feature-icon">◆</span> Garment-washed for softness and shrink resistance</div>
+          <div class="feature-item"><span class="feature-icon">◆</span> Dropped shoulder, oversized fit</div>
+          <div class="feature-item"><span class="feature-icon">◆</span> Ribbed cuffs and hem, interior drawstring</div>
+          <div class="feature-item"><span class="feature-icon">◆</span> Embroidered Nova Core wordmark at chest</div>
+        </div>
+ 
+        <div class="divider"></div>
+ 
+        <div class="accordion">
+          <div class="acc-item">
+            <div class="acc-header" onclick="toggleAcc(this)">Shipping & Returns <span class="acc-arrow">+</span></div>
+            <div class="acc-body"><p>Free shipping on orders over $150. Standard delivery 5–10 business days. Express available at checkout. Unworn items accepted for return within 30 days with original tags attached.</p></div>
+          </div>
+          <div class="acc-item">
+            <div class="acc-header" onclick="toggleAcc(this)">Care Instructions <span class="acc-arrow">+</span></div>
+            <div class="acc-body"><p>Machine wash cold, inside out. Do not tumble dry. Do not bleach. Lay flat to dry or hang. Low iron if needed, do not iron on print or embroidery areas.</p></div>
+          </div>
+          <div class="acc-item">
+            <div class="acc-header" onclick="toggleAcc(this)">Sizing Notes <span class="acc-arrow">+</span></div>
+            <div class="acc-body"><p>This piece is cut oversized by design. If you prefer a more fitted look, size down one. Model is 6'1" wearing size M. Refer to our size guide for exact measurements.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════ ABOUT PAGE -->
+<div class="page" id="page-about">
+  <div class="about-hero">
+    <h1 data-animated-banner>Built with vision. Made to last. No shortcuts taken.</h1>
+  </div>
+  <div class="about-body">
+    <div class="about-intro">
+      <div class="about-intro-text">
+        <div class="section-label">The Story</div>
+        <h2>Nova Core started with one frustration.</h2>
+        <p>Too many brands claimed "premium" and delivered mediocre. Too many streetwear labels chased trends and left their identity behind. Nova Core was built as the answer to both.</p>
+        <p style="margin-top:16px">We started in 2025 with a single hoodie and a clear brief: make something that doesn't need a logo to announce itself. Something you reach for first. Something that doesn't fall apart on the second wash.</p>
+        <p style="margin-top:16px">Every piece since has followed the same logic. Materials chosen for quality, not margin. Silhouettes designed to outlive the season. Details considered once, then considered again.</p>
+        <a href="#" class="btn-outline" style="display:inline-block;margin-top:36px" onclick="navigate('shop')">Shop the Collection</a>
+      </div>
+      <div class="about-intro-visual">
+        <div class="label">SINCE<br>2025</div>
+      </div>
+    </div>
+ 
+    <div class="about-pillars">
+      <div class="pillar">
+        <div class="pillar-num">01</div>
+        <div class="pillar-title">Material Intelligence</div>
+        <p class="pillar-desc">We don't source cheap and call it premium. Every fabric is tested for weight, hand-feel, durability, and how it ages. We'd rather launch less and deliver more.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">02</div>
+        <div class="pillar-title">Designed to Outlast</div>
+        <p class="pillar-desc">Trend-free design is deliberate. We create silhouettes and palettes that belong to no single season. Your Nova Core piece should look as sharp in three years as it does today.</p>
+      </div>
+      <div class="pillar">
+        <div class="pillar-num">03</div>
+        <div class="pillar-title">Intentional Scarcity</div>
+        <p class="pillar-desc">We run limited quantities because we mean it. Not as a gimmick — but because small runs let us obsess over quality in ways that mass production never allows.</p>
+      </div>
+    </div>
+ 
+    <div class="about-team" style="background:var(--charcoal)">
+      <div style="max-width:600px">
+        <div class="section-label">The People</div>
+        <h2 class="section-title">Small team. High standards.</h2>
+        <p class="section-sub">Nova Core is built by people who wear what they make. No committees, no brand consultants — just conviction.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card">
+          <div class="team-img"><div class="team-img-label">AK</div></div>
+          <div class="team-info">
+            <div class="team-name">Asher Kim</div>
+            <div class="team-role">Creative Director</div>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-img"><div class="team-img-label">MV</div></div>
+          <div class="team-info">
+            <div class="team-name">Maya Voss</div>
+            <div class="team-role">Head of Design</div>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-img"><div class="team-img-label">DL</div></div>
+          <div class="team-info">
+            <div class="team-name">Dante Lorca</div>
+            <div class="team-role">Production Lead</div>
+          </div>
+        </div>
+        <div class="team-card">
+          <div class="team-img"><div class="team-img-label">SR</div></div>
+          <div class="team-info">
+            <div class="team-name">Sia Ren</div>
+            <div class="team-role">Brand Strategy</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+  <footer>
+    <div class="footer-top">
+      <div><div class="footer-brand">NOVA<span>.</span>CORE</div><p class="footer-tagline">Premium streetwear engineered with intent.</p><div class="footer-socials"><a href="https://www.instagram.com/novacoreshop" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Instagram">IG</a><a href="https://www.tiktok.com/@novacoreshop" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="TikTok">TK</a><a href="https://www.facebook.com/novacoreshop" class="social-btn" target="_blank" rel="noopener noreferrer" aria-label="Facebook">FB</a></div></div>
+      <div class="footer-col"><h4>Shop</h4><ul><li><a href="#" onclick="navigate('shop')">All Products</a></li><li><a href="#" onclick="navigate('shop')">Hoodies</a></li><li><a href="#" onclick="navigate('shop')">T-Shirts</a></li></ul></div>
+      <div class="footer-col"><h4>Brand</h4><ul><li><a href="#" onclick="navigate('about')">Our Story</a></li><li><a href="#" onclick="navigate('custom')">Custom Orders</a></li></ul></div>
+      <div class="footer-col"><h4>Support</h4><ul><li><a href="#" onclick="navigate('shipping')">Shipping & Returns</a></li><li><a href="#" onclick="navigate('tracking')">Track Order</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-copy">© 2025 Nova Core. All rights reserved.</div></div>
+  </footer>
+</div>
+ 
+<!-- ══════════════════════════════════════════ CONTACT PAGE -->
+<div class="page" id="page-contact">
+  <div class="contact-layout">
+    <div class="contact-left">
+      <div class="section-label">Get in Touch</div>
+      <h1 data-animated-banner>We're here.</h1>
+      <p>Whether it's a question about an order, a collaboration idea, or feedback — reach out. We read every message.</p>
+      <div class="contact-info">
+        <div class="contact-info-item">
+          <div class="contact-info-icon">@</div>
+          <div class="contact-info-text">
+            <h4>Email</h4>
+            <p><a href="mailto:nick@shopnovacore.com">nick@shopnovacore.com</a></p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">☎</div>
+          <div class="contact-info-text">
+            <h4>Phone</h4>
+            <p><a href="tel:0481850919">0481850919</a></p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">▲</div>
+          <div class="contact-info-text">
+            <h4>Response Time</h4>
+            <p>We aim to reply within 24 hours, Mon–Fri</p>
+          </div>
+        </div>
+        <div class="contact-info-item">
+          <div class="contact-info-icon">◆</div>
+          <div class="contact-info-text">
+            <h4>Order Issues</h4>
+            <p>Include your order number for faster support</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="contact-right">
+      <h2>Send a Message</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <input type="text" class="form-input" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Last Name</label>
+          <input type="text" class="form-input" placeholder="Last name">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Email</label>
+        <input type="email" class="form-input" placeholder="your@email.com">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Order Number (Optional)</label>
+        <input type="text" class="form-input" placeholder="NC-XXXXXX">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Subject</label>
+        <select class="form-input">
+          <option value="">Select a topic</option>
+          <option>Order Issue</option>
+          <option>Product Question</option>
+          <option>Returns & Refunds</option>
+          <option>Collaboration</option>
+          <option>Press Inquiry</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Message</label>
+        <textarea class="form-input" rows="4" placeholder="Tell us what's on your mind..."></textarea>
+      </div>
+      <button class="form-submit" onclick="submitContact()">Send Message</button>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════ SHIPPING PAGE -->
+<div class="page" id="page-shipping">
+  <div class="info-page">
+    <h1 data-animated-banner>Shipping & Returns</h1>
+ 
+    <div class="info-section">
+      <h2>Shipping Rates</h2>
+      <table class="info-table">
+        <thead><tr><th>Destination</th><th>Service</th><th>Cost</th><th>Estimated Time</th></tr></thead>
+        <tbody>
+          <tr><td>Domestic</td><td>Standard</td><td>$8.00</td><td>5–7 business days</td></tr>
+          <tr><td>Domestic</td><td>Express</td><td>$16.00</td><td>2–3 business days</td></tr>
+          <tr><td>Domestic</td><td>Free (orders over $150)</td><td>$0.00</td><td>5–7 business days</td></tr>
+          <tr><td>International</td><td>Standard</td><td>$22.00</td><td>10–18 business days</td></tr>
+          <tr><td>International</td><td>Express</td><td>$38.00</td><td>5–8 business days</td></tr>
+        </tbody>
+      </table>
+    </div>
+ 
+    <div class="info-section">
+      <h2>Processing Times</h2>
+      <p>All orders are processed within 1–3 business days of being placed. Orders placed on weekends or public holidays will begin processing the next business day.</p>
+      <p>During drops or limited releases, processing may extend to 3–5 business days. You'll receive a confirmation email with tracking once your order has shipped.</p>
+    </div>
+ 
+    <div class="info-section">
+      <h2>Returns Policy</h2>
+      <p>We accept returns within 30 days of delivery on unworn, unwashed items with all original tags attached. Sale items and limited pieces are final sale.</p>
+      <ul>
+        <li>Items must be in original condition — unworn, unwashed, no odours or stains</li>
+        <li>Original tags must be attached</li>
+        <li>Returns must include your order number and reason</li>
+        <li>Shipping costs for returns are the customer's responsibility unless we made an error</li>
+        <li>Refunds are processed within 5–7 business days of receiving the return</li>
+      </ul>
+    </div>
+ 
+    <div class="info-section">
+      <h2>Exchanges</h2>
+      <p>We currently process exchanges as a return + new purchase. This ensures the item you want stays available. If you need a different size or colour, return your original item and place a new order. Contact us and we'll hold the item for you where possible.</p>
+    </div>
+ 
+    <div class="info-section">
+      <h2>Damaged or Incorrect Items</h2>
+      <p>If you received a damaged, defective, or incorrect item, please contact us at hello@novacore.co within 7 days of delivery with your order number and photos. We'll make it right at no cost to you.</p>
+    </div>
+ 
+    <div class="info-section">
+      <h2>Customs & Duties (International)</h2>
+      <p>International orders may be subject to import duties, taxes, or customs fees upon arrival. These charges are outside of our control and are the customer's responsibility. Nova Core is not responsible for delays caused by customs clearance.</p>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════ SIZE GUIDE PAGE -->
+<div class="page" id="page-size-guide">
+  <div class="info-page">
+    <h1 data-animated-banner>Size Guide</h1>
+
+    <div class="info-section">
+      <h2>Fit Notes</h2>
+      <p>Most Nova Core pieces are cut with a relaxed streetwear silhouette. If you want a standard fit, size down one. If you prefer a true oversized look, keep your usual size.</p>
+      <p>Still unsure? Measure your favourite hoodie or tee at home and compare it against the chart below.</p>
+    </div>
+
+    <div class="info-section">
+      <h2>Tops Measurement Chart</h2>
+      <table class="info-table">
+        <thead><tr><th>Size</th><th>Chest</th><th>Length</th><th>Shoulder</th></tr></thead>
+        <tbody>
+          <tr><td>S</td><td>42 in</td><td>27 in</td><td>20 in</td></tr>
+          <tr><td>M</td><td>46 in</td><td>28 in</td><td>22 in</td></tr>
+          <tr><td>L</td><td>50 in</td><td>29 in</td><td>23 in</td></tr>
+          <tr><td>XL</td><td>54 in</td><td>30 in</td><td>24 in</td></tr>
+          <tr><td>XXL</td><td>58 in</td><td>31 in</td><td>25 in</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="info-section">
+      <h2>How to Measure</h2>
+      <ul>
+        <li><strong>Chest:</strong> Measure straight across the widest part of the garment and double it</li>
+        <li><strong>Length:</strong> Measure from the highest shoulder point to the hem</li>
+        <li><strong>Shoulder:</strong> Measure seam to seam across the top back panel</li>
+      </ul>
+    </div>
+
+    <a href="/shop" class="btn-outline" onclick="return navigate('shop')" style="display:inline-block">Back to Shop</a>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════ PRIVACY PAGE -->
+<div class="page" id="page-privacy">
+  <div class="info-page">
+    <h1 data-animated-banner>Privacy Policy</h1>
+
+    <div class="info-section">
+      <h2>What We Collect</h2>
+      <p>We collect the details you submit through the storefront, including newsletter signups, contact messages, custom order requests, and order-tracking lookups.</p>
+    </div>
+
+    <div class="info-section">
+      <h2>How We Use It</h2>
+      <ul>
+        <li>To respond to support and custom-order requests</li>
+        <li>To manage product updates and store operations</li>
+        <li>To send email updates only when you opt in</li>
+      </ul>
+    </div>
+
+    <div class="info-section">
+      <h2>Data Storage</h2>
+      <p>Store data is saved securely in the project database and used only for store operations and customer support.</p>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════ TERMS PAGE -->
+<div class="page" id="page-terms">
+  <div class="info-page">
+    <h1 data-animated-banner>Terms of Service</h1>
+
+    <div class="info-section">
+      <h2>Orders</h2>
+      <p>Orders are confirmed after payment is received and are subject to stock availability. We reserve the right to cancel fraudulent or duplicate orders.</p>
+    </div>
+
+    <div class="info-section">
+      <h2>Custom Work</h2>
+      <p>Custom and bespoke work begins only after the brief is approved. Once production starts, those orders are final sale unless we make an error.</p>
+    </div>
+
+    <div class="info-section">
+      <h2>Site Use</h2>
+      <p>By using the site, you agree not to misuse store tools, attempt unauthorised access, or submit false order information.</p>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════ COOKIE PAGE -->
+<div class="page" id="page-cookies">
+  <div class="info-page">
+    <h1 data-animated-banner>Cookie Policy</h1>
+
+    <div class="info-section">
+      <h2>Why Cookies Are Used</h2>
+      <p>This storefront uses browser storage to keep your cart, admin session, and page state available while you browse.</p>
+    </div>
+
+    <div class="info-section">
+      <h2>What Is Stored</h2>
+      <ul>
+        <li>Your cart contents for easier checkout</li>
+        <li>Your current admin session token after sign-in</li>
+        <li>Basic page preferences needed for the storefront experience</li>
+      </ul>
+    </div>
+
+    <div class="info-section">
+      <h2>Managing Preferences</h2>
+      <p>You can clear this stored data at any time through your browser settings or by signing out of the admin area.</p>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════ ORDER TRACKING PAGE -->
+<div class="page" id="page-tracking">
+  <div class="tracking-page">
+    <div class="tracking-box">
+      <h1 data-animated-banner>Track Your Order</h1>
+      <p>Enter your order number and email to see the latest status on your Nova Core package.</p>
+      <div class="tracking-form">
+        <div class="form-group">
+          <label class="form-label">Order Number</label>
+          <input type="text" class="form-input" id="trackOrderNum" placeholder="NC-123456">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email Address</label>
+          <input type="email" class="form-input" id="trackEmail" placeholder="your@email.com">
+        </div>
+        <button class="form-submit" onclick="trackOrder()">Track Order</button>
+      </div>
+ 
+      <div class="tracking-status" id="trackingResult">
+        <div class="tracking-order-id" id="trackOrderId"></div>
+        <div class="tracking-order-name" id="trackOrderName"></div>
+        <div class="tracking-steps">
+          <div class="tracking-step">
+            <div class="step-icon done">✓</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+              <div class="step-title">Order Confirmed</div>
+              <div class="step-date" id="stepDate1">—</div>
+            </div>
+          </div>
+          <div class="tracking-step">
+            <div class="step-icon done">✓</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+              <div class="step-title">Order Processed & Packed</div>
+              <div class="step-date" id="stepDate2">—</div>
+            </div>
+          </div>
+          <div class="tracking-step">
+            <div class="step-icon current">→</div>
+            <div class="step-line"></div>
+            <div class="step-content">
+              <div class="step-title">Shipped — In Transit</div>
+              <div class="step-date" id="stepDate3">—</div>
+            </div>
+          </div>
+          <div class="tracking-step">
+            <div class="step-icon pending">○</div>
+            <div class="step-content">
+              <div class="step-title">Delivered</div>
+              <div class="step-date">Estimated: 2–3 business days</div>
+            </div>
+          </div>
+        </div>
+        <p style="font-size:0.78rem;color:var(--muted-grey);margin-top:28px">Need help? <a href="#" onclick="navigate('contact')" style="color:var(--accent)">Contact our support team →</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════ CUSTOM ORDER PAGE -->
+<div class="page" id="page-custom">
+  <div class="custom-page">
+    <div class="custom-hero">
+      <div class="section-label">Custom & Bespoke</div>
+      <h1 data-animated-banner>Made exactly as you imagined it.</h1>
+      <p>Nova Core accepts a limited number of custom design requests per season. Whether it's a modified silhouette, a personal colourway, or a one-of-one sample — if you have the vision, we'll build it with you.</p>
+    </div>
+ 
+    <div class="custom-options">
+      <div class="custom-option active" onclick="selectCustom(this)">
+        <div class="custom-option-icon">◆</div>
+        <div class="custom-option-title">Custom Colourway</div>
+        <p class="custom-option-desc">Choose from our existing silhouettes in a colour we don't stock. Minimum 1 unit. 4–6 week lead time.</p>
+      </div>
+      <div class="custom-option" onclick="selectCustom(this)">
+        <div class="custom-option-icon">▲</div>
+        <div class="custom-option-title">Graphic / Embroidery</div>
+        <p class="custom-option-desc">Submit your artwork or brief. We'll apply it to the garment of your choice. Perfect for personal pieces or gifting.</p>
+      </div>
+      <div class="custom-option" onclick="selectCustom(this)">
+        <div class="custom-option-icon">→</div>
+        <div class="custom-option-title">Bespoke Sample</div>
+        <p class="custom-option-desc">A fully custom piece from scratch. Silhouette, fabric, detailing — designed collaboratively. Quote on enquiry.</p>
+      </div>
+    </div>
+ 
+    <div class="custom-pricing">
+      <p><strong>Pricing & Minimums:</strong> Custom colourways start from $220. Graphic applications from $195. Bespoke samples are quoted individually and typically range from $350–$800 depending on complexity. All custom orders are non-refundable once production begins.</p>
+    </div>
+ 
+    <div class="custom-form">
+      <h2>Submit Your Request</h2>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">First Name</label>
+          <input type="text" class="form-input" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-input" placeholder="your@email.com">
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Request Type</label>
+        <select class="form-input">
+          <option>Custom Colourway</option>
+          <option>Graphic / Embroidery</option>
+          <option>Bespoke Sample</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Base Garment (if applicable)</label>
+        <select class="form-input">
+          <option value="">Select a base garment</option>
+          <option>Core Oversized Hoodie</option>
+          <option>Essential Tee</option>
+          <option>Structured Cap</option>
+          <option>Volume Shorts</option>
+          <option>Quarter Zip</option>
+          <option>Other / TBD</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Design Brief</label>
+        <textarea class="form-input" rows="5" placeholder="Describe your vision in as much detail as possible. Include colours, references, specific placement, quantities, or any other relevant details..."></textarea>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Budget Range</label>
+        <select class="form-input">
+          <option>Under $300</option>
+          <option>$300 – $500</option>
+          <option>$500 – $800</option>
+          <option>$800+</option>
+          <option>Not sure — need a quote</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label">Timeline</label>
+        <select class="form-input">
+          <option>Flexible (6–8 weeks)</option>
+          <option>Standard (4–6 weeks)</option>
+          <option>Rushed (2–4 weeks, +30% surcharge)</option>
+        </select>
+      </div>
+      <button class="form-submit" onclick="submitCustom()">Submit Request</button>
+      <p style="font-size:0.78rem;color:var(--muted-grey);margin-top:16px">We review all requests within 48 hours and will reach out to confirm feasibility and next steps before any payment is taken.</p>
+    </div>
+  </div>
+ 
+  <footer>
+    <div class="footer-top">
+      <div><div class="footer-brand">NOVA<span>.</span>CORE</div><p class="footer-tagline">Premium streetwear engineered with intent.</p></div>
+      <div class="footer-col"><h4>Shop</h4><ul><li><a href="#" onclick="navigate('shop')">All Products</a></li></ul></div>
+      <div class="footer-col"><h4>Support</h4><ul><li><a href="#" onclick="navigate('shipping')">Shipping & Returns</a></li><li><a href="#" onclick="navigate('contact')">Contact</a></li></ul></div>
+      <div class="footer-col"><h4>Brand</h4><ul><li><a href="#" onclick="navigate('about')">Our Story</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><div class="footer-copy">© 2025 Nova Core. All rights reserved.</div></div>
+  </footer>
+</div>
+ 
+<!-- ══════════════════════════════════════════ ADMIN LOGIN -->
+<div class="page" id="page-admin-login">
+  <div class="admin-login">
+    <div class="admin-login-box">
+      <div class="admin-login-logo">NOVA<span>.</span>CORE</div>
+      <div class="admin-login-tag">Admin Access</div>
+      <h2>Sign In</h2>
+      <div class="login-error" id="loginError">Incorrect password. Please try again.</div>
+      <div class="form-group">
+        <label class="form-label">Password</label>
+        <input type="password" class="form-input" id="adminPassword" placeholder="Enter admin password" onkeydown="if(event.key==='Enter')adminLogin()">
+      </div>
+      <button class="form-submit" onclick="adminLogin()" style="margin-top:8px">Access Dashboard</button>
+      <p style="font-size:0.72rem;color:var(--muted-grey);text-align:center;margin-top:20px">Protected area. Unauthorised access prohibited.</p>
+    </div>
+  </div>
+</div>
+ 
+<!-- ══════════════════════════════════════════ ADMIN DASHBOARD -->
+<div class="page" id="page-admin">
+  <div class="admin-page active" id="adminDashboard">
+    <div class="admin-nav">
+      <div class="admin-tab active" onclick="adminSection('overview',this)">Overview</div>
+      <div class="admin-tab" onclick="adminSection('products',this)">Products</div>
+      <div class="admin-tab" onclick="adminSection('orders',this)">Orders</div>
+      <div class="admin-tab" onclick="adminSection('add-product',this)">Add Product</div>
+      <div style="flex:1"></div>
+      <button class="logout-btn" onclick="adminLogout()" style="margin:12px 0">Logout</button>
+    </div>
+    <div class="admin-content">
+ 
+      <!-- OVERVIEW -->
+      <div class="admin-section active" id="admin-overview">
+        <div class="admin-header">
+          <h2 class="admin-title">Dashboard Overview</h2>
+          <div style="font-size:0.75rem;color:var(--muted-grey)">Nova Core Admin — SS25</div>
+        </div>
+        <div class="admin-stats">
+          <div class="stat-card">
+            <div class="stat-label">Total Revenue</div>
+            <div class="stat-value">$14,280</div>
+            <div class="stat-change up">↑ 23% this month</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Orders</div>
+            <div class="stat-value">84</div>
+            <div class="stat-change up">↑ 12 this week</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Products Live</div>
+            <div class="stat-value" id="adminProductCount">9</div>
+            <div class="stat-change" style="color:var(--muted-grey)">3 low stock</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-label">Avg Order Value</div>
+            <div class="stat-value">$170</div>
+            <div class="stat-change up">↑ 8% vs last month</div>
+          </div>
+        </div>
+        <h3 style="font-size:1rem;font-weight:700;color:var(--white);margin-bottom:20px">Recent Orders</h3>
+        <table class="admin-table">
+          <thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td>NC-009284</td><td>Jordan M.</td><td>2</td><td>$340</td><td><span class="stock-badge in">Shipped</span></td></tr>
+            <tr><td>NC-009283</td><td>Zara K.</td><td>1</td><td>$185</td><td><span class="stock-badge in">Shipped</span></td></tr>
+            <tr><td>NC-009282</td><td>Alex P.</td><td>3</td><td>$412</td><td><span class="stock-badge low">Processing</span></td></tr>
+            <tr><td>NC-009281</td><td>Sam T.</td><td>1</td><td>$95</td><td><span class="stock-badge low">Processing</span></td></tr>
+            <tr><td>NC-009280</td><td>Riley N.</td><td>2</td><td>$260</td><td><span class="stock-badge in">Delivered</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+ 
+      <!-- PRODUCTS -->
+      <div class="admin-section" id="admin-products">
+        <div class="admin-header">
+          <h2 class="admin-title">Product Management</h2>
+          <button class="action-btn edit" onclick="adminSection('add-product', document.querySelector('.admin-tab:nth-child(4)'))">+ Add New</button>
+        </div>
+        <table class="admin-table" id="adminProductTable">
+          <thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Actions</th></tr></thead>
+          <tbody id="adminProductBody"></tbody>
+        </table>
+      </div>
+ 
+      <!-- ORDERS -->
+      <div class="admin-section" id="admin-orders">
+        <div class="admin-header"><h2 class="admin-title">All Orders</h2></div>
+        <table class="admin-table">
+          <thead><tr><th>Order #</th><th>Date</th><th>Customer</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead>
+          <tbody>
+            <tr><td>NC-009284</td><td>Dec 18, 2025</td><td>Jordan M.</td><td>$340</td><td><span class="stock-badge in">Shipped</span></td><td><div class="action-btns"><button class="action-btn edit">View</button></div></td></tr>
+            <tr><td>NC-009283</td><td>Dec 17, 2025</td><td>Zara K.</td><td>$185</td><td><span class="stock-badge in">Shipped</span></td><td><div class="action-btns"><button class="action-btn edit">View</button></div></td></tr>
+            <tr><td>NC-009282</td><td>Dec 17, 2025</td><td>Alex P.</td><td>$412</td><td><span class="stock-badge low">Processing</span></td><td><div class="action-btns"><button class="action-btn edit">View</button></div></td></tr>
+            <tr><td>NC-009281</td><td>Dec 16, 2025</td><td>Sam T.</td><td>$95</td><td><span class="stock-badge low">Processing</span></td><td><div class="action-btns"><button class="action-btn edit">View</button></div></td></tr>
+            <tr><td>NC-009280</td><td>Dec 15, 2025</td><td>Riley N.</td><td>$260</td><td><span class="stock-badge in">Delivered</span></td><td><div class="action-btns"><button class="action-btn edit">View</button></div></td></tr>
+            <tr><td>NC-009279</td><td>Dec 14, 2025</td><td>Chris A.</td><td>$185</td><td><span class="stock-badge in">Delivered</span></td><td><div class="action-btns"><button class="action-btn edit">View</button></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+ 
+      <!-- ADD PRODUCT -->
+      <div class="admin-section" id="admin-add-product">
+        <div class="admin-header"><h2 class="admin-title">Add Product</h2></div>
+        <div class="add-product-form">
+          <h3>New Product Details</h3>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Product Name</label>
+              <input type="text" class="form-input" id="newProductName" placeholder="e.g. Core Oversized Hoodie">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Category</label>
+              <select class="form-input" id="newProductCat">
+                <option value="hoodies">Hoodies</option>
+                <option value="tees">T-Shirts</option>
+                <option value="hats">Hats</option>
+                <option value="shorts">Shorts</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Price ($)</label>
+              <input type="number" class="form-input" id="newProductPrice" placeholder="185">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Sale Price ($) — Optional</label>
+              <input type="number" class="form-input" id="newProductSale" placeholder="Leave empty if no sale">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Stock Count</label>
+              <input type="number" class="form-input" id="newProductStock" placeholder="50">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Badge</label>
+              <select class="form-input" id="newProductBadge">
+                <option value="">None</option>
+                <option value="new">New</option>
+                <option value="ltd">Limited</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Short Description</label>
+            <textarea class="form-input" id="newProductDesc" rows="3" placeholder="Brief product description for the product page..."></textarea>
+          </div>
+          <button class="form-submit" onclick="addProduct()">Add Product</button>
+        </div>
+      </div>
+ 
+    </div>
+  </div>
+</div>
+ 
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <div class="cart-title">Your Cart (<span id="cartItemCount">0</span>)</div>
+    <div class="cart-close" onclick="closeCart()">✕</div>
+  </div>
+  <div class="cart-items" id="cartItemsContainer">
+    <div class="cart-empty">
+      <div class="cart-empty-icon">◻</div>
+      <p>Your cart is empty.<br>Start adding some pieces.</p>
+      <a href="#" onclick="closeCart();navigate('shop')" class="btn-outline" style="margin-top:16px;display:inline-block">Shop Now</a>
+    </div>
+  </div>
+  <div class="cart-footer" id="cartFooter" style="display:none">
+    <div class="cart-subtotal">
+      <span class="cart-subtotal-label">Subtotal</span>
+      <span class="cart-subtotal-val" id="cartSubtotal">$0</span>
+    </div>
+    <p class="cart-note">Shipping & taxes calculated at checkout</p>
+    <button class="checkout-btn" onclick="checkout()">Proceed to Checkout</button>
+    <button class="continue-btn" onclick="closeCart()">Continue Shopping</button>
+  </div>
+</div>
+ 
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+ 
+<script src="assets/script.js" defer></script>
+</body>
+</html>
