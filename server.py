@@ -25,7 +25,8 @@ SMTP_USER = os.getenv('SMTP_USER', '')
 SMTP_PASS = os.getenv('SMTP_PASS', '')
 EMAIL_SENDER = os.getenv('EMAIL_SENDER', 'no-reply@shopnovacore.com')
 ADMIN_EMAILS = [
-    'nick@shopnovacore.com'
+    'nick@shopnovacore.com',
+    'lilnick516@gmail.com'
 ]
 
 def send_admin_email(subject, body):
