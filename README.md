@@ -32,7 +32,7 @@ Then open:
 
 ## Demo access
 
-- **Admin password:** `novacore2025`
+- **Admin password:** `novacore2026`
 - **Tracking demo:** `NC-123456` with `your@email.com`
 
 > If you want, the next step can be swapping SQLite for PostgreSQL, Supabase, or Firebase.
