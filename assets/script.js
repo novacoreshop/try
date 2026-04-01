@@ -5,7 +5,7 @@ const STORAGE_KEYS = {
 };
 
 const API_BASE = '/api';
-const ADMIN_PASSWORD = 'novacore2025';
+const ADMIN_PASSWORD = 'novacore2026';
 const PAGE_ROUTES = {
   home: '/',
   shop: '/shop',
@@ -400,9 +400,7 @@ function productCardHTML(product, showQuick = true) {
   const stockClass = product.stock === 0 ? 'sold' : product.badge === 'ltd' ? 'ltd' : product.badge === 'new' ? 'new' : '';
   const badgeLabel = product.stock === 0 ? 'Sold Out' : product.badge === 'ltd' ? 'Limited' : product.badge === 'new' ? 'New' : '';
   const colorDots = product.colors.map(color => `<div class="color-dot" style="background:${color}" title="${getColorName(color)}"></div>`).join('');
-  const priceHTML = product.sale
-    ? `<span class="product-price sale">$${product.sale}</span><span class="product-price-orig">$${product.price}</span>`
-    : `<span class="product-price">$${product.price}</span>`;
+  const priceHTML = `<span class="product-price">$0 Coming Soon</span>`;
 
   return `
     <div class="product-card" onclick="openProduct(${product.id})">
@@ -463,7 +461,7 @@ function renderSearchSuggestions() {
         <button class="search-suggestion" onclick="chooseSearchSuggestion(${product.id})">
           <span>
             <span class="search-suggestion-name">${product.name}</span>
-            <span class="search-suggestion-meta">${formatCategory(product.cat)} · $${product.sale || product.price}</span>
+            <span class="search-suggestion-meta">${formatCategory(product.cat)} · $0 Coming Soon</span>
           </span>
           <strong>View</strong>
         </button>
@@ -586,9 +584,7 @@ function openProduct(id, options = {}) {
 
   currentProduct = product;
   document.getElementById('detailName').textContent = product.name;
-  document.getElementById('detailPrice').innerHTML = product.sale
-    ? `$${product.sale} <span class="orig">$${product.price}</span>`
-    : `$${product.price}`;
+  document.getElementById('detailPrice').innerHTML = `$0 Coming Soon`;
   document.getElementById('detailDesc').textContent = product.desc;
   document.getElementById('galleryLabel').textContent = getProductMark(product.cat);
   document.getElementById('gallerySubLabel').textContent = `${formatCategory(product.cat)} / ${product.stock > 0 ? `${product.stock} in stock` : 'Sold out'}`;
@@ -729,14 +725,14 @@ function renderCart() {
     return;
   }
 
-  const subtotal = cart.reduce((sum, item) => sum + (item.product.sale || item.product.price) * item.qty, 0);
+  const subtotal = 0;
   container.innerHTML = cart.map(item => `
     <div class="cart-item">
       <div class="cart-item-img">${getProductMark(item.product.cat)}</div>
       <div class="cart-item-info">
         <div class="cart-item-name">${item.product.name}</div>
         <div class="cart-item-variant">Size: ${item.size}</div>
-        <div class="cart-item-price">$${((item.product.sale || item.product.price) * item.qty).toFixed(0)}</div>
+        <div class="cart-item-price">$0 Coming Soon</div>
         <div class="cart-item-qty">
           <button class="ciq-btn" onclick="changeCartQty('${item.key}',-1)">−</button>
           <span class="ciq-num">${item.qty}</span>
@@ -746,7 +742,7 @@ function renderCart() {
       </div>
     </div>`).join('');
 
-  document.getElementById('cartSubtotal').textContent = `$${subtotal.toFixed(0)}`;
+  document.getElementById('cartSubtotal').textContent = `$0 Coming Soon`;
   footer.style.display = 'block';
 }
 
@@ -881,13 +877,199 @@ function renderAdminProducts() {
     return `<tr>
       <td><div class="product-thumb-cell"><div class="product-thumb-sm">${product.id}</div><span>${product.name}</span></div></td>
       <td style="text-transform:capitalize">${formatCategory(product.cat)}</td>
-      <td>${product.sale ? `<span style="color:var(--accent)">$${product.sale}</span> <span style="text-decoration:line-through;color:var(--muted-grey);font-size:0.78rem">$${product.price}</span>` : `$${product.price}`}</td>
+      <td>$0 Coming Soon</td>
       <td><span class="stock-badge ${stockClass}">${stockLabel} (${product.stock})</span></td>
       <td><div class="action-btns"><button class="action-btn edit" onclick="editProduct(${product.id})">Edit</button><button class="action-btn del" onclick="deleteProduct(${product.id})">Delete</button></div></td>
     </tr>`;
   }).join('');
 
   document.getElementById('adminProductCount').textContent = products.length;
+}
+
+// Initialize orders from localStorage or sample orders
+let orders = [];
+let adminStats = {
+  totalRevenue: 0,
+  totalOrders: 0,
+  avgOrderValue: 0
+};
+
+function loadAdminStats() {
+  const stored = localStorage.getItem('novacore-admin-stats');
+  if (stored) {
+    try {
+      adminStats = JSON.parse(stored);
+    } catch (e) {
+      console.warn('Failed to load admin stats');
+      adminStats = { totalRevenue: 0, totalOrders: 0, avgOrderValue: 0 };
+    }
+  }
+  renderAdminStats();
+}
+
+function saveAdminStats() {
+  localStorage.setItem('novacore-admin-stats', JSON.stringify(adminStats));
+  renderAdminStats();
+}
+
+function renderAdminStats() {
+  const revenueEl = document.getElementById('adminTotalRevenue');
+  const ordersEl = document.getElementById('adminTotalOrders');
+  const avgEl = document.getElementById('adminAvgOrderValue');
+  
+  if (revenueEl) revenueEl.textContent = `$${adminStats.totalRevenue.toLocaleString()}`;
+  if (ordersEl) ordersEl.textContent = adminStats.totalOrders;
+  if (avgEl) avgEl.textContent = adminStats.totalOrders > 0 ? `$${(adminStats.totalRevenue / adminStats.totalOrders).toFixed(0)}` : '$0';
+}
+
+async function createOrder(customerName, customerEmail, itemCount, amount) {
+  const pad = (str) => String(str).padStart(6, '0');
+  const lastOrder = orders.length > 0 ? parseInt(orders[orders.length - 1].id.replace('NC-', '')) : 9279;
+  const newOrderNum = pad(lastOrder + 1);
+  const orderId = `NC-${newOrderNum}`;
+  
+  const today = new Date();
+  const dateStr = today.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+  
+  const newOrder = {
+    id: orderId,
+    date: dateStr,
+    customer: customerName,
+    email: customerEmail,
+    items: itemCount,
+    amount: amount,
+    status: 'Processing'
+  };
+
+  try {
+    await apiRequest('/orders', {
+      method: 'POST',
+      body: JSON.stringify({
+        orderNumber: orderId,
+        email: customerEmail,
+        item: `${itemCount} item(s)`,
+        total: `$${amount}`,
+        status: 'Processing'
+      })
+    });
+  } catch (error) {
+    console.warn('Failed to notify server about new order', error);
+  }
+  
+  orders.push(newOrder);
+  saveOrders();
+  renderAdminOrders();
+  calculateAdminStats();
+  
+  return orderId;
+}
+
+function loadOrders() {
+  const stored = localStorage.getItem('novacore-orders');
+  if (stored) {
+    try {
+      orders = JSON.parse(stored);
+      calculateAdminStats();
+      return;
+    } catch (e) {
+      console.warn('Failed to load orders from storage');
+    }
+  }
+  
+  // Initialize with empty orders - start at $0
+  orders = [];
+  saveOrders();
+}
+
+function saveOrders() {
+  localStorage.setItem('novacore-orders', JSON.stringify(orders));
+  calculateAdminStats();
+}
+
+function calculateAdminStats() {
+  const completedOrders = orders.filter(order => order.status === 'Delivered');
+  
+  adminStats.totalRevenue = completedOrders.reduce((sum, order) => sum + (order.amount || 0), 0);
+  adminStats.totalOrders = orders.length;
+  adminStats.avgOrderValue = adminStats.totalOrders > 0 ? Math.round(adminStats.totalRevenue / adminStats.totalOrders) : 0;
+  
+  saveAdminStats();
+  renderAdminStats();
+}
+
+function renderAdminOrders() {
+  const tbody = document.getElementById('adminOrdersBody');
+  if (!tbody) return;
+  
+  tbody.innerHTML = orders.map(order => {
+    const statusClass = order.status === 'Delivered' ? 'in' : order.status === 'Shipped' ? 'in' : 'low';
+    const amount = order.amount || 0;
+    return `<tr>
+      <td>${order.id}</td>
+      <td>${order.date}</td>
+      <td>${order.customer}</td>
+      <td>$${amount}</td>
+      <td><span class="stock-badge ${statusClass}">${order.status}</span></td>
+      <td><div class="action-btns"><button class="action-btn edit" onclick="editOrderStatus('${order.id}')">Edit Status</button><button class="action-btn del" onclick="deleteOrder('${order.id}')">Delete</button></div></td>
+    </tr>`;
+  }).join('');
+  
+  renderRecentOrdersTable();
+}
+
+function renderRecentOrdersTable() {
+  const tbody = document.getElementById('adminRecentOrdersBody');
+  if (!tbody) return;
+  
+  const recent = orders.slice(-5).reverse();
+  tbody.innerHTML = recent.map(order => {
+    const statusClass = order.status === 'Delivered' ? 'in' : order.status === 'Shipped' ? 'in' : 'low';
+    const itemCount = order.items || 1;
+    const amount = order.amount || 0;
+    return `<tr>
+      <td>${order.id}</td>
+      <td>${order.customer}</td>
+      <td>${itemCount}</td>
+      <td>$${amount}</td>
+      <td><span class="stock-badge ${statusClass}">${order.status}</span></td>
+    </tr>`;
+  }).join('');
+}
+
+function editOrderStatus(orderId) {
+  const order = orders.find(o => o.id === orderId);
+  if (!order) return;
+  
+  const statuses = ['Processing', 'Shipped', 'Delivered', 'Cancelled'];
+  const currentIndex = statuses.indexOf(order.status);
+  
+  const statusStr = prompt(`Edit order status for ${orderId}.\n\nCurrent: ${order.status}\n\nOptions: ${statuses.join(', ')}`, order.status);
+  
+  if (statusStr !== null && statusStr.trim()) {
+    const newStatus = statusStr.trim();
+    if (statuses.includes(newStatus)) {
+      order.status = newStatus;
+      saveOrders();
+      renderAdminOrders();
+      calculateAdminStats();
+      showToast(`Order ${orderId} status updated to ${newStatus}.`);
+    } else {
+      showToast('Invalid status. Use: Processing, Shipped, Delivered, or Cancelled');
+    }
+  }
+}
+
+function deleteOrder(orderId) {
+  const order = orders.find(o => o.id === orderId);
+  if (!order) return;
+  
+  if (confirm(`Delete order ${orderId} for ${order.customer}? This cannot be undone.`)) {
+    orders = orders.filter(o => o.id !== orderId);
+    saveOrders();
+    renderAdminOrders();
+    calculateAdminStats();
+    showToast(`Order ${orderId} deleted.`);
+  }
 }
 
 async function addProduct() {
@@ -1072,11 +1254,16 @@ async function submitContact() {
 }
 
 async function submitCustom() {
-  const scope = document.querySelector('#page-custom .custom-form');
-  const fields = scope.querySelectorAll('.form-input');
-  const [name, email, requestType, baseGarment, brief, budget, timeline] = fields;
+  const name = document.querySelector('#page-custom .custom-form .form-row .form-group input[placeholder="Your name"]');
+  const email = document.querySelector('#page-custom .custom-form .form-group input[type="email"]');
+  const requestType = document.getElementById('customRequestType');
+  const baseGarment = document.getElementById('customBaseGarment');
+  const brief = document.getElementById('customDesignBrief');
+  const budget = document.getElementById('customBudget');
+  const timeline = document.getElementById('customTimeline');
+  const upload = document.getElementById('customDesignUpload');
 
-  if (!name.value.trim() || !email.value.trim() || !brief.value.trim()) {
+  if (!name?.value.trim() || !email?.value.trim() || !brief?.value.trim()) {
     showToast('Please add your name, email, and design brief.');
     return;
   }
@@ -1086,27 +1273,27 @@ async function submitCustom() {
     return;
   }
 
+  const formData = {
+    name: name.value.trim(),
+    email: email.value.trim().toLowerCase(),
+    requestType: requestType.value.trim(),
+    baseGarment: baseGarment.value.trim(),
+    brief: brief.value.trim(),
+    budget: budget.value.trim(),
+    timeline: timeline.value.trim(),
+    uploadFileName: upload?.files?.[0]?.name || ''
+  };
+
   try {
     const data = await apiRequest('/custom', {
       method: 'POST',
-      body: JSON.stringify({
-        name: name.value.trim(),
-        email: email.value.trim().toLowerCase(),
-        requestType: requestType.value,
-        baseGarment: baseGarment.value,
-        brief: brief.value.trim(),
-        budget: budget.value,
-        timeline: timeline.value
-      })
+      body: JSON.stringify(formData)
     });
 
-    fields.forEach(field => {
-      if (field.tagName === 'SELECT') {
-        field.selectedIndex = 0;
-      } else {
-        field.value = '';
-      }
+    [name, email, requestType, baseGarment, brief, budget, timeline].forEach(field => {
+      if (field) field.value = '';
     });
+    if (upload) upload.value = '';
 
     showToast(data.message || 'Request received. We\'ll review and contact you within 48 hours.');
   } catch (error) {
@@ -1170,5 +1357,8 @@ document.addEventListener('DOMContentLoaded', async () => {
   renderCart();
   updateCartCount();
   renderAdminProducts();
+  loadOrders();
+  loadAdminStats();
+  renderAdminOrders();
   restoreRouteState();
 });

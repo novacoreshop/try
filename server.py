@@ -2,9 +2,11 @@
 import json
 import os
 import secrets
+import smtplib
 import sqlite3
 from contextlib import closing
 from datetime import UTC, datetime
+from email.message import EmailMessage
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from urllib.parse import parse_qs, urlparse
@@ -14,8 +16,34 @@ DATA_DIR = ROOT / 'data'
 DB_PATH = DATA_DIR / 'novacore.db'
 HOST = os.getenv('HOST', '127.0.0.1')
 PORT = int(os.getenv('PORT', '8000'))
-ADMIN_PASSWORD = os.getenv('NOVACORE_ADMIN_PASSWORD', 'novacore2025')
+ADMIN_PASSWORD = os.getenv('NOVACORE_ADMIN_PASSWORD', 'novacore2026')
 ADMIN_TOKENS = set()
+
+SMTP_HOST = os.getenv('SMTP_HOST', 'localhost')
+SMTP_PORT = int(os.getenv('SMTP_PORT', '25'))
+SMTP_USER = os.getenv('SMTP_USER', '')
+SMTP_PASS = os.getenv('SMTP_PASS', '')
+EMAIL_SENDER = os.getenv('EMAIL_SENDER', 'no-reply@shopnovacore.com')
+ADMIN_EMAILS = [
+    'nick@shopnovacore.com'
+]
+
+def send_admin_email(subject, body):
+    msg = EmailMessage()
+    msg['Subject'] = subject
+    msg['From'] = EMAIL_SENDER
+    msg['To'] = ', '.join(ADMIN_EMAILS)
+    msg.set_content(body)
+
+    try:
+        with smtplib.SMTP(SMTP_HOST, SMTP_PORT, timeout=10) as smtp:
+            smtp.ehlo()
+            if SMTP_USER and SMTP_PASS:
+                smtp.starttls()
+                smtp.login(SMTP_USER, SMTP_PASS)
+            smtp.send_message(msg)
+    except Exception as error:
+        print('Warning: unable to send admin email:', error)
 
 PRODUCT_SEED = [
     {'id': 1, 'name': 'Core Oversized Hoodie', 'cat': 'hoodies', 'price': 185, 'sale': None, 'badge': 'new', 'desc': '400GSM French Terry. Garment-washed. Dropped shoulder silhouette.', 'stock': 24, 'colors': ['#1a1a1a', '#3a3836', '#c8bfb0']},
@@ -388,6 +416,11 @@ class NovaCoreHandler(SimpleHTTPRequestHandler):
                 )
                 conn.commit()
 
+            send_admin_email(
+                f'Contact message from {first_name} {last_name} ({email})',
+                f'Name: {first_name} {last_name}\nEmail: {email}\nOrder #: {order_number or "N/A"}\nSubject: {subject}\nMessage:\n{message}'
+            )
+
             return self.send_json({'message': "Message sent. We'll be in touch within 24 hours."}, 201)
 
         if parsed.path == '/api/custom':
@@ -398,6 +431,7 @@ class NovaCoreHandler(SimpleHTTPRequestHandler):
             brief = str(payload.get('brief', '')).strip()
             budget = str(payload.get('budget', '')).strip()
             timeline = str(payload.get('timeline', '')).strip()
+            upload_file = str(payload.get('uploadFileName', '')).strip()
 
             if not name or not email or not brief:
                 return self.send_json({'error': 'Please add your name, email, and design brief.'}, 400)
@@ -412,7 +446,47 @@ class NovaCoreHandler(SimpleHTTPRequestHandler):
                 )
                 conn.commit()
 
+            send_admin_email(
+                f'Custom request from {name} ({email})',
+                f'Name: {name}\nEmail: {email}\nRequest: {request_type or "N/A"}\nBase garment: {base_garment or "N/A"}\nBudget: {budget or "N/A"}\nTimeline: {timeline or "N/A"}\nUploaded file: {upload_file or "none"}\nDesign brief:\n{brief}'
+            )
+
             return self.send_json({'message': "Request received. We'll review and contact you within 48 hours."}, 201)
+
+        if parsed.path == '/api/orders':
+            order_number = str(payload.get('orderNumber', '')).strip().upper() or 'NC-000000'
+            email = str(payload.get('email', '')).strip().lower()
+            item = str(payload.get('item', '')).strip()
+            total = str(payload.get('total', '')).strip()
+            status = str(payload.get('status', 'Processing')).strip()
+
+            if not order_number or not email or not item or not total:
+                return self.send_json({'error': 'Please complete the required order fields.'}, 400)
+
+            with closing(get_db()) as conn:
+                conn.execute(
+                    '''
+                    INSERT OR REPLACE INTO orders (order_number, email, item, dates_json, final_text, state_json, created_at)
+                    VALUES (?, ?, ?, ?, ?, ?, ?)
+                    ''',
+                    (
+                        order_number,
+                        email,
+                        item,
+                        json.dumps([status]),
+                        f'Order placed {datetime.now(UTC).isoformat()}',
+                        json.dumps([status]),
+                        now_iso(),
+                    ),
+                )
+                conn.commit()
+
+            send_admin_email(
+                f'New order placed: {order_number}',
+                f'Order: {order_number}\nEmail: {email}\nItem: {item}\nTotal: {total}\nStatus: {status}'
+            )
+
+            return self.send_json({'message': 'Order placed and notification sent.'}, 201)
 
         if parsed.path == '/api/products':
             if not self.require_admin():

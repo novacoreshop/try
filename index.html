@@ -67,7 +67,7 @@
     <div class="hero-bg"></div>
     <div class="hero-grid"></div>
     <div class="hero-content">
-      <div class="hero-eyebrow">Spring / Summer 2025 — Collection Zero</div>
+      <div class="hero-eyebrow">Spring / Summer 2026 — Collection Zero</div>
       <div class="hero-sub">Engineered for those who move between worlds. Premium streetwear built with intent.</div>
       <h1 class="hero-title" aria-label="Nova Core">
         <span class="hero-word hero-word-left" aria-hidden="true">
@@ -232,7 +232,7 @@
           <div class="story-img-accent">NC</div>
         </div>
         <div class="story-float-card">
-          <div class="story-float-num">2025</div>
+          <div class="story-float-num">2026</div>
           <div class="story-float-label">Founded</div>
         </div>
       </div>
@@ -293,7 +293,7 @@
       </div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">© 2025 Nova Core. All rights reserved.</div>
+      <div class="footer-copy">© 2026 Nova Core. All rights reserved.</div>
       <div class="footer-legal">
         <a href="/privacy" onclick="return navigate('privacy')">Privacy Policy</a>
         <a href="/terms" onclick="return navigate('terms')">Terms of Service</a>
@@ -366,7 +366,7 @@
       <div class="footer-col"><h4>Support</h4><ul><li><a href="#" onclick="navigate('shipping')">Shipping & Returns</a></li><li><a href="#" onclick="navigate('tracking')">Track Order</a></li></ul></div>
     </div>
     <div class="footer-bottom">
-      <div class="footer-copy">© 2025 Nova Core. All rights reserved.</div>
+      <div class="footer-copy">© 2026 Nova Core. All rights reserved.</div>
       <div class="footer-legal">
         <a href="/privacy" onclick="return navigate('privacy')">Privacy</a>
         <a href="/terms" onclick="return navigate('terms')">Terms</a>
@@ -480,12 +480,12 @@
         <div class="section-label">The Story</div>
         <h2>Nova Core started with one frustration.</h2>
         <p>Too many brands claimed "premium" and delivered mediocre. Too many streetwear labels chased trends and left their identity behind. Nova Core was built as the answer to both.</p>
-        <p style="margin-top:16px">We started in 2025 with a single hoodie and a clear brief: make something that doesn't need a logo to announce itself. Something you reach for first. Something that doesn't fall apart on the second wash.</p>
+        <p style="margin-top:16px">We started in 2026 with a single hoodie and a clear brief: make something that doesn't need a logo to announce itself. Something you reach for first. Something that doesn't fall apart on the second wash.</p>
         <p style="margin-top:16px">Every piece since has followed the same logic. Materials chosen for quality, not margin. Silhouettes designed to outlive the season. Details considered once, then considered again.</p>
         <a href="#" class="btn-outline" style="display:inline-block;margin-top:36px" onclick="navigate('shop')">Shop the Collection</a>
       </div>
       <div class="about-intro-visual">
-        <div class="label">SINCE<br>2025</div>
+        <div class="label">SINCE<br>2026</div>
       </div>
     </div>
  
@@ -553,7 +553,7 @@
       <div class="footer-col"><h4>Brand</h4><ul><li><a href="#" onclick="navigate('about')">Our Story</a></li><li><a href="#" onclick="navigate('custom')">Custom Orders</a></li></ul></div>
       <div class="footer-col"><h4>Support</h4><ul><li><a href="#" onclick="navigate('shipping')">Shipping & Returns</a></li><li><a href="#" onclick="navigate('tracking')">Track Order</a></li></ul></div>
     </div>
-    <div class="footer-bottom"><div class="footer-copy">© 2025 Nova Core. All rights reserved.</div></div>
+    <div class="footer-bottom"><div class="footer-copy">© 2026 Nova Core. All rights reserved.</div></div>
   </footer>
 </div>
  
@@ -617,15 +617,7 @@
       </div>
       <div class="form-group">
         <label class="form-label">Subject</label>
-        <select class="form-input">
-          <option value="">Select a topic</option>
-          <option>Order Issue</option>
-          <option>Product Question</option>
-          <option>Returns & Refunds</option>
-          <option>Collaboration</option>
-          <option>Press Inquiry</option>
-          <option>Other</option>
-        </select>
+        <input type="text" class="form-input" placeholder="Subject of your message">
       </div>
       <div class="form-group">
         <label class="form-label">Message</label>
@@ -907,48 +899,43 @@
       </div>
       <div class="form-group">
         <label class="form-label">Request Type</label>
-        <select class="form-input">
-          <option>Custom Colourway</option>
-          <option>Graphic / Embroidery</option>
-          <option>Bespoke Sample</option>
-        </select>
+        <input type="text" id="customRequestType" class="form-input" placeholder="Describe the custom request (e.g. colourway, graphic, bespoke)">
       </div>
       <div class="form-group">
         <label class="form-label">Base Garment (if applicable)</label>
-        <select class="form-input">
-          <option value="">Select a base garment</option>
-          <option>Core Oversized Hoodie</option>
-          <option>Essential Tee</option>
-          <option>Structured Cap</option>
-          <option>Volume Shorts</option>
-          <option>Quarter Zip</option>
-          <option>Other / TBD</option>
-        </select>
+        <input type="text" id="customBaseGarment" class="form-input" placeholder="Preferred garment model or leave blank for recommendation">
       </div>
       <div class="form-group">
         <label class="form-label">Design Brief</label>
-        <textarea class="form-input" rows="5" placeholder="Describe your vision in as much detail as possible. Include colours, references, specific placement, quantities, or any other relevant details..."></textarea>
+        <textarea id="customDesignBrief" class="form-input" rows="5" placeholder="Describe your vision in as much detail as possible. Include colours, references, placement, quantities, etc."></textarea>
       </div>
       <div class="form-group">
         <label class="form-label">Budget Range</label>
-        <select class="form-input">
-          <option>Under $300</option>
-          <option>$300 – $500</option>
-          <option>$500 – $800</option>
-          <option>$800+</option>
-          <option>Not sure — need a quote</option>
-        </select>
+        <input type="text" id="customBudget" class="form-input" placeholder="e.g. $250-450 or custom quote request">
       </div>
       <div class="form-group">
         <label class="form-label">Timeline</label>
-        <select class="form-input">
-          <option>Flexible (6–8 weeks)</option>
-          <option>Standard (4–6 weeks)</option>
-          <option>Rushed (2–4 weeks, +30% surcharge)</option>
-        </select>
+        <input type="text" id="customTimeline" class="form-input" placeholder="e.g. 4-6 weeks, need by date, flexible">
+      </div>
+      <div class="form-group">
+        <label class="form-label">Upload Your Design</label>
+        <input type="file" id="customDesignUpload" class="form-input" accept="image/*,.png,.jpg,.jpeg,.pdf" />
       </div>
       <button class="form-submit" onclick="submitCustom()">Submit Request</button>
       <p style="font-size:0.78rem;color:var(--muted-grey);margin-top:16px">We review all requests within 48 hours and will reach out to confirm feasibility and next steps before any payment is taken.</p>
+    </div>
+
+    <div class="custom-right-info">
+      <div class="accordion">
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">What We Offer <span class="acc-arrow">+</span></div>
+          <div class="acc-body"><p>We offer custom-designed clothes that let you bring your unique ideas to life. Whether it’s a personal design, a special logo, or a one-of-a-kind pattern, we can create it exactly the way you want. Each piece is carefully crafted with quality materials and attention to detail, so you get a product that’s not just stylish, but truly yours. Please note that all custom designs are reviewed before production to ensure they meet our quality standards.</p></div>
+        </div>
+        <div class="acc-item">
+          <div class="acc-header" onclick="toggleAcc(this)">What Can Be Approved or Declined <span class="acc-arrow">+</span></div>
+          <div class="acc-body"><p>We approve designs that are original, appropriate, and meet our quality standards. Designs containing offensive language, copyrighted material, or anything unsafe will be declined. This ensures every custom piece we produce is both stylish and safe to wear, while giving you the freedom to express your creativity.</p></div>
+        </div>
+      </div>
     </div>
   </div>
  
@@ -959,7 +946,7 @@
       <div class="footer-col"><h4>Support</h4><ul><li><a href="#" onclick="navigate('shipping')">Shipping & Returns</a></li><li><a href="#" onclick="navigate('contact')">Contact</a></li></ul></div>
       <div class="footer-col"><h4>Brand</h4><ul><li><a href="#" onclick="navigate('about')">Our Story</a></li></ul></div>
     </div>
-    <div class="footer-bottom"><div class="footer-copy">© 2025 Nova Core. All rights reserved.</div></div>
+    <div class="footer-bottom"><div class="footer-copy">© 2026 Nova Core. All rights reserved.</div></div>
   </footer>
 </div>
  
@@ -1003,35 +990,29 @@
         <div class="admin-stats">
           <div class="stat-card">
             <div class="stat-label">Total Revenue</div>
-            <div class="stat-value">$14,280</div>
-            <div class="stat-change up">↑ 23% this month</div>
+            <div class="stat-value" id="adminTotalRevenue">$0</div>
+            <div class="stat-change" id="adminRevenueChange" style="color:var(--muted-grey)">from completed orders</div>
           </div>
           <div class="stat-card">
             <div class="stat-label">Orders</div>
-            <div class="stat-value">84</div>
-            <div class="stat-change up">↑ 12 this week</div>
+            <div class="stat-value" id="adminTotalOrders">0</div>
+            <div class="stat-change" id="adminOrderChange" style="color:var(--muted-grey)">total placed</div>
           </div>
           <div class="stat-card">
             <div class="stat-label">Products Live</div>
-            <div class="stat-value" id="adminProductCount">9</div>
-            <div class="stat-change" style="color:var(--muted-grey)">3 low stock</div>
+            <div class="stat-value" id="adminProductCount">0</div>
+            <div class="stat-change" style="color:var(--muted-grey)" id="adminLowStock">in stock</div>
           </div>
           <div class="stat-card">
             <div class="stat-label">Avg Order Value</div>
-            <div class="stat-value">$170</div>
-            <div class="stat-change up">↑ 8% vs last month</div>
+            <div class="stat-value" id="adminAvgOrderValue">$0</div>
+            <div class="stat-change" id="adminAvgChange" style="color:var(--muted-grey)">per order</div>
           </div>
         </div>
         <h3 style="font-size:1rem;font-weight:700;color:var(--white);margin-bottom:20px">Recent Orders</h3>
         <table class="admin-table">
           <thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th></tr></thead>
-          <tbody>
-            <tr><td>NC-009284</td><td>Jordan M.</td><td>2</td><td>$340</td><td><span class="stock-badge in">Shipped</span></td></tr>
-            <tr><td>NC-009283</td><td>Zara K.</td><td>1</td><td>$185</td><td><span class="stock-badge in">Shipped</span></td></tr>
-            <tr><td>NC-009282</td><td>Alex P.</td><td>3</td><td>$412</td><td><span class="stock-badge low">Processing</span></td></tr>
-            <tr><td>NC-009281</td><td>Sam T.</td><td>1</td><td>$95</td><td><span class="stock-badge low">Processing</span></td></tr>
-            <tr><td>NC-009280</td><td>Riley N.</td><td>2</td><td>$260</td><td><span class="stock-badge in">Delivered</span></td></tr>
-          </tbody>
+          <tbody id="adminRecentOrdersBody"></tbody>
         </table>
       </div>
  
@@ -1052,14 +1033,7 @@
         <div class="admin-header"><h2 class="admin-title">All Orders</h2></div>
         <table class="admin-table">
           <thead><tr><th>Order #</th><th>Date</th><th>Customer</th><th>Total</th><th>Status</th><th>Actions</th></tr></thead>
-          <tbody>
-            <tr><td>NC-009284</td><td>Dec 18, 2025</td><td>Jordan M.</td><td>$340</td><td><span class="stock-badge in">Shipped</span></td><td><div class="action-btns"><button class="action-btn edit">View</button></div></td></tr>
-            <tr><td>NC-009283</td><td>Dec 17, 2025</td><td>Zara K.</td><td>$185</td><td><span class="stock-badge in">Shipped</span></td><td><div class="action-btns"><button class="action-btn edit">View</button></div></td></tr>
-            <tr><td>NC-009282</td><td>Dec 17, 2025</td><td>Alex P.</td><td>$412</td><td><span class="stock-badge low">Processing</span></td><td><div class="action-btns"><button class="action-btn edit">View</button></div></td></tr>
-            <tr><td>NC-009281</td><td>Dec 16, 2025</td><td>Sam T.</td><td>$95</td><td><span class="stock-badge low">Processing</span></td><td><div class="action-btns"><button class="action-btn edit">View</button></div></td></tr>
-            <tr><td>NC-009280</td><td>Dec 15, 2025</td><td>Riley N.</td><td>$260</td><td><span class="stock-badge in">Delivered</span></td><td><div class="action-btns"><button class="action-btn edit">View</button></div></td></tr>
-            <tr><td>NC-009279</td><td>Dec 14, 2025</td><td>Chris A.</td><td>$185</td><td><span class="stock-badge in">Delivered</span></td><td><div class="action-btns"><button class="action-btn edit">View</button></div></td></tr>
-          </tbody>
+          <tbody id="adminOrdersBody"></tbody>
         </table>
       </div>
  
